@@ -1,0 +1,78 @@
+.neon-text {
+  font-size: 1.9rem;
+  cursor: default;
+  transition: .3s linear;
+  color: transparent;
+  -webkit-text-stroke: 1px #4dcee1;
+  background-image: linear-gradient(to left,
+  #4dcee1, #3a95a3, black, rgb(66, 65, 65));
+  background-size: 200%;
+  -webkit-background-clip: text;
+  animation: move 30s linear infinite;
+}
+
+@keyframes move {
+  100% {
+    background-position: 2000px 0;
+  }
+}
+
+.neon-text:hover {
+  color: #4dcee1;
+  text-shadow: 0 0 5px rgba(17, 132, 225, 0.5), 0 0 10px rgba(17, 132, 225, 0.5),
+    0 0 20px rgba(17, 132, 225, 0.5), 0 0 40px rgba(17, 132, 225, 0.5),
+    0 0 80px rgba(17, 132, 225, 0.5), 0 0 160px rgba(17, 132, 225, 0.5);
+}
+
+.nav-link {
+  transition: border-radius 0.3s ease;
+  border: 1px solid transparent; /* Asegura que haya un borde inicial */
+}
+
+.active {
+  position: relative; /* Asegura que el pseudo-elemento esté posicionado correctamente */
+  border-radius: 20px; /* o cualquier valor que desees */
+  padding: 5px;
+}
+
+.active::before {
+  content: ""; /* Crea un pseudo-elemento */
+  position: absolute; /* Posiciona el pseudo-elemento */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 1px solid transparent; /* Establece un borde transparente inicial */
+  border-radius: inherit; /* Hereda el radio de borde del elemento padre */
+  animation: borderAnimation 3s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+
+}
+
+@keyframes borderAnimation {
+  0% {
+    border-top-color: transparent;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+  }
+  25% {
+    border-top-color: #ffffff;
+  }
+  50% {
+    border-top-color: #ffffff;
+    border-right-color: #ffffff;
+  }
+  75% {
+    border-top-color: #ffffff;
+    border-right-color: #ffffff;
+    border-bottom-color: #ffffff;
+  }
+  100% {
+    border-color: #ffffff; /* Establece un borde negro completo al final */
+  }
+}
+
+.active {
+  /* Elimina los estilos de borde predeterminados para el elemento activo */
+  border: none;
+}
