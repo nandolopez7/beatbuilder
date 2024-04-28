@@ -3,6 +3,7 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import {InitialPage} from './pages/initial_page'
 import {InfoPage} from './pages/info_page'
 import {TermsPage} from './pages/terms_page'
+import {PlaylistPage} from './pages/playlist_page'
 
 
 
@@ -20,6 +21,7 @@ function App() {
       <Route path='/' element ={<InitialPage/>} />
       <Route path='/info' element ={<InfoPage/>} />
       <Route path='/terms' element ={<TermsPage/>} />
+      <Route path='/playlist' element ={<PlaylistPage/>} />
     
     </Routes>
 
