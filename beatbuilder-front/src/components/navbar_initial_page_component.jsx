@@ -5,6 +5,7 @@ import "../css/navbar_initial_page_style.css";
 
 export function NavbarInitialPage() {
   const location = useLocation();
+  // eslint-disable-next-line
   const [activeItem, setActiveItem] = useState("MisEventos");
 
   const handleItemClick = (itemName) => {
