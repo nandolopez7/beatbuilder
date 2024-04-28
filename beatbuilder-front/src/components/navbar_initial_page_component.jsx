@@ -17,6 +17,7 @@ export function NavbarInitialPage() {
         expand="sm"
         bg="dark"
         data-bs-theme="dark"
+        style={{position:"sticky", top:"0", zIndex:"2"}}
       >
         <Container>
           <Navbar.Brand className="neon-text">BeatBuilder</Navbar.Brand>

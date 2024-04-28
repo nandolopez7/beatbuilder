@@ -11,6 +11,17 @@
   animation: move 30s linear infinite;
 }
 
+.neon-text-footer {
+  cursor: default;
+  transition: .3s linear;
+  color: transparent;
+  background-image: linear-gradient(to left,
+  #0ccdfd, #20a3f5, #3279ed, black, rgb(66, 65, 65));
+  background-size: 200%;
+  -webkit-background-clip: text;
+  animation: move 30s linear infinite;
+}
+
 @keyframes move {
   100% {
     background-position: 2000px 0;
