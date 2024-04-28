@@ -45,11 +45,11 @@ export function NavbarInitialPage() {
               </Nav.Link>
               <Nav.Link
                 as={NavLink}
-                to="/sign"
-                onClick={() => handleItemClick("Sign")}
-                className={location.pathname === "/sign" ? "active" : ""}
+                to="/terms"
+                onClick={() => handleItemClick("Terms")}
+                className={location.pathname === "/terms" ? "active" : ""}
               >
-                Sign In/Up
+                Terms & Conditions
               </Nav.Link>
             </Nav>
           </Navbar.Collapse>
