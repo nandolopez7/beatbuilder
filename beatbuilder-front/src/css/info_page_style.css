@@ -1,0 +1,7 @@
+.card-info-style {
+    transition: box-shadow 0.6s ease;
+}
+
+.card-info-style:hover {
+    box-shadow: 0 5px 5px rgba(171, 171, 171, 0.5);
+}
