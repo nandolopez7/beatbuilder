@@ -7,7 +7,7 @@ function Footer() {
 <footer style={footerStyle}>
   <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
     <div style={{ display: "flex", alignItems: "center" }}>
-    <img style={{width:"auto", height:"30px", marginRight:"5px"}} src="/wave-sound.png"/>
+    <img alt="wave-sound"style={{width:"auto", height:"30px", marginRight:"5px"}} src="/wave-sound.png"/>
       <h5 style={{ margin: "0" }} className="neon-text-footer">BeatBuilder</h5>
     </div>
     <p style={{ margin: "0" }}>&copy; 2024 BeatBuilder. All rights reserved.</p>

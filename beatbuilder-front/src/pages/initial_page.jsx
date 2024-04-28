@@ -10,10 +10,9 @@ export function InitialPage() {
   return (
     <>
       <NavbarInitialPage/>
-      <Container
+      <Container className="neon-bg"
         fluid
         style={{
-          backgroundImage: "linear-gradient(to bottom right, #4dcee1, #1184e1)",
           color: "#ffffff",
         }}
       >
