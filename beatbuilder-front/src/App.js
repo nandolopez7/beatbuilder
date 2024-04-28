@@ -2,7 +2,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import {InitialPage} from './pages/initial_page'
 import {InfoPage} from './pages/info_page'
-import {SignInPage} from './pages/sign_page'
+import {TermsPage} from './pages/terms_page'
 
 
 
@@ -19,7 +19,7 @@ function App() {
     <Routes>
       <Route path='/' element ={<InitialPage/>} />
       <Route path='/info' element ={<InfoPage/>} />
-      <Route path='/sign' element ={<SignInPage/>} />
+      <Route path='/terms' element ={<TermsPage/>} />
     
     </Routes>
 
