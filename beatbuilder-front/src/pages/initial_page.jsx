@@ -1,4 +1,5 @@
 import { Container, Row, Col, Card, Button } from "react-bootstrap";
+import { useNavigate } from "react-router-dom"; // Importa useNavigate
 import { NavbarInitialPage } from "../components/navbar_initial_page_component";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMusic } from "@fortawesome/free-solid-svg-icons";
@@ -7,6 +8,11 @@ import "../css/initial_page_style.css";
 
 
 export function InitialPage() {
+  const navigate = useNavigate(); // Inicializa useNavigate
+  const redirectToPlaylist = () => {
+    navigate('/playlist'); // Redirige a la URL /playlist al hacer clic en la tarjeta
+  };
+
   return (
     <>
       <NavbarInitialPage/>
@@ -63,7 +69,7 @@ export function InitialPage() {
                       <FontAwesomeIcon icon={faMusic} size="2xl" />
                     </Card.Title>
                     <Card.Title>Pop</Card.Title>
-                    <Button variant="outline-primary">Create Playlist</Button>
+                    <Button onClick={redirectToPlaylist} variant="outline-primary">Create Playlist</Button>
                   </Card.Body>
                 </Card>
               </Col>
