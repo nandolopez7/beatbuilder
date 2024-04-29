@@ -1,40 +1,133 @@
-import { Container, Row, Col } from "react-bootstrap";
-import "../css/initial_page_style.css";
+import { Container, Row, Card, Col, Button } from "react-bootstrap";
+import { useNavigate } from "react-router-dom"; // Importa useNavigate
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faSpotify,
+  faItunes,
+  faYoutube,
+} from "@fortawesome/free-brands-svg-icons";
+import Footer from "../components/footer_component";
+import "../css/playlist_page_style.css";
 
 export function PlaylistPage() {
+  const datos = [
+    {
+      id: 1,
+      image: "backslide.png",
+      songTitle: "Backslide",
+      songSinger: "Twenty One Pilots",
+      audioSrc: "/audio/backslide.mp3", // Corrección de la ruta
+    },
+    {
+      id: 2,
+      image: "mockingbird.png",
+      songTitle: "Mockingbird",
+      songSinger: "Eminem",
+      audioSrc: "/audio/mockingbird.mp3", // Corrección de la ruta
+    },
+  ];
+
+  const navigate = useNavigate(); // Inicializa useNavigate
+  const redirectToMenu = () => {
+    navigate('/'); // Redirige a la URL /playlist al hacer clic en la tarjeta
+  };
+
   return (
     <>
-      <Container
-        fluid
-        className="neon-bg"
-      >
+      <Container fluid style={{ backgroundColor: "#f3f4f6" }}>
+        <Row className="text-center">
+          <h1
+            style={{
+              marginTop: "5rem",
+              fontWeight: "bold",
+              marginRight: "2rem",
+            }}
+          >
+            YOUR PLAYLIST IS
+          </h1>
+          <ul style={{ marginBottom: "5rem" }}>
+            <li>R</li>
+            <li>E</li>
+            <li>A</li>
+            <li>D</li>
+            <li>Y</li>
+          </ul>
+        </Row>
+
         <Row
           className="justify-content-center align-items-center text-center"
+          style={{ backgroundColor: "#fff" }}
         >
-          <Col xs={12}>
-            <Container
-              fluid
-              className="container-lista"
-              style={{ marginTop: "5rem" }}
+          {datos.map((dato) => (
+            <Col
+              lg={4}
+              md={6}
+              sm={12}
+              style={{ marginTop: "2rem", marginBottom: "2rem" }}
+              key={dato.id}
             >
-              <div>
-                <h1 className="titulo-lista">
-                  Your
-                  <div className="lista">
-                    <div className="item">custom playlist is ready for you!</div>
-                    <div className="item">jam session lineup is ready for you!</div>
-                    <div className="item">Your ultimate party playlist is ready for you!</div>
-                    <div className="item">that resonates with you</div>
+              <Card style={{ width: "25rem" }}>
+                <Card.Img variant="top" src={dato.image} />
+                <Card.Body>
+                  <Card.Title>{dato.songTitle}</Card.Title>
+                  <Card.Text>{dato.songSinger}</Card.Text>
+                  <div
+                    style={{
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                    }}
+                  >
+                    <audio controls style={{ marginRight: "10px" }}>
+                      <source src={dato.audioSrc} type="audio/mpeg" />
+                      Tu navegador no soporta el elemento de audio.
+                    </audio>
+                    <a
+                      href={`https://open.spotify.com/search/${dato.songTitle}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{ marginRight: "10px" }}
+                    >
+                      <FontAwesomeIcon
+                        icon={faSpotify}
+                        size="2xl"
+                        style={{ color: "#1ed760" }}
+                      />
+                    </a>
+                    <a
+                      href={`https://music.apple.com/us/search?term=${dato.songTitle}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{ marginRight: "10px" }}
+                    >
+                      <FontAwesomeIcon
+                        icon={faItunes}
+                        size="2xl"
+                        style={{ color: "#fc2f45" }}
+                      />
+                    </a>
+                    <a
+                      href={`https://music.youtube.com/search?q=${dato.songTitle}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <FontAwesomeIcon
+                        icon={faYoutube}
+                        size="2xl"
+                        style={{ color: "#fe0001" }}
+                      />
+                    </a>
                   </div>
-                </h1>
-              </div>
-            </Container>
-            <div style={{ marginTop: "5rem", marginBottom: "5rem" }}>
-              <h5>With us, you can explore a magnificent new world of music</h5>
-            </div>
-          </Col>
+                </Card.Body>
+              </Card>
+            </Col>
+          ))}
+          <div style={{marginBottom:"2rem"}}>
+            <Button variant="outline-dark" onClick={redirectToMenu}>Back to menu</Button>
+          </div>
         </Row>
       </Container>
+      <Footer />
     </>
   );
 }
