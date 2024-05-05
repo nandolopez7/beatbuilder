@@ -1,6 +1,10 @@
+
+import React, { useState, useEffect } from 'react';
+import { db } from '../firebase.js';
 import { Container, Row, Card, Col, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom"; // Importa useNavigate
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import shuffle from 'lodash/shuffle'; // Importa la función shuffle de lodash
 import {
   faSpotify,
   faItunes,
@@ -10,6 +14,7 @@ import Footer from "../components/footer_component";
 import "../css/playlist_page_style.css";
 
 export function PlaylistPage() {
+  const [canciones, setCanciones] = useState([]);
   const datos = [
     {
       id: 1,
@@ -26,6 +31,23 @@ export function PlaylistPage() {
       audioSrc: "/audio/mockingbird.mp3", // Corrección de la ruta
     },
   ];
+
+
+  useEffect(() => {
+    const obtenerDatos = async () => {
+      try {
+        const data = await db.collection('rock').get();
+        const arrayData = data.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+        const cancionesAleatorias = shuffle(arrayData).slice(0, 10); // Obtener 10 canciones aleatorias
+        console.log(cancionesAleatorias);
+        setCanciones(cancionesAleatorias);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    obtenerDatos();
+  }, []);
 
   const navigate = useNavigate(); // Inicializa useNavigate
   const redirectToMenu = () => {
@@ -58,9 +80,9 @@ export function PlaylistPage() {
           className="justify-content-center align-items-center text-center"
           style={{ backgroundColor: "#fff" }}
         >
-          {datos.map((dato) => (
+          {canciones.map((dato) => (
             <Col
-              lg={4}
+              lg={3}
               md={6}
               sm={12}
               style={{ marginTop: "2rem", marginBottom: "2rem" }}
