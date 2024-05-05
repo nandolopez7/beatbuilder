@@ -44,7 +44,7 @@ export function PlaylistPage() {
 
         const data = await db.collection(genre).get();
         const arrayData = data.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-        const cancionesAleatorias = shuffle(arrayData).slice(0, 10); // Obtener 10 canciones aleatorias
+        const cancionesAleatorias = shuffle(arrayData).slice(0, 12); // Obtener 12 canciones aleatorias
         console.log(cancionesAleatorias);
         setCanciones(cancionesAleatorias);
       } catch (error) {
