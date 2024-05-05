@@ -15,6 +15,9 @@ import "../css/playlist_page_style.css";
 
 export function PlaylistPage() {
   const [canciones, setCanciones] = useState([]);
+   // eslint-disable-next-line
+  const [selectedGenre, setSelectedGenre] = useState("");
+   // eslint-disable-next-line
   const datos = [
     {
       id: 1,
@@ -36,7 +39,10 @@ export function PlaylistPage() {
   useEffect(() => {
     const obtenerDatos = async () => {
       try {
-        const data = await db.collection('rock').get();
+        const genre = localStorage.getItem("selectedGenre"); // Obtener el género del almacenamiento local
+        setSelectedGenre(genre);
+
+        const data = await db.collection(genre).get();
         const arrayData = data.docs.map(doc => ({ id: doc.id, ...doc.data() }));
         const cancionesAleatorias = shuffle(arrayData).slice(0, 10); // Obtener 10 canciones aleatorias
         console.log(cancionesAleatorias);
@@ -84,12 +90,12 @@ export function PlaylistPage() {
             <Col
               lg={3}
               md={6}
-              sm={12}
+              sm={10}
               style={{ marginTop: "2rem", marginBottom: "2rem" }}
               key={dato.id}
             >
               <Card style={{ width: "25rem" }}>
-                <Card.Img variant="top" src={dato.image} />
+                <Card.Img variant="top" src={dato.image} style={{height:"300px", width:"auto"}}/>
                 <Card.Body>
                   <Card.Title>{dato.songTitle}</Card.Title>
                   <Card.Text>{dato.songSinger}</Card.Text>
