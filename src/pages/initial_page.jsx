@@ -244,9 +244,9 @@ export function InitialPage() {
                         <Card.Title>
                           <FontAwesomeIcon icon={faMusic} size="2xl" />
                         </Card.Title>
-                        <Card.Title>Classical</Card.Title>
+                        <Card.Title>Afrobeats</Card.Title>
                         <Button
-                          onClick={() => redirectToPlaylist("classical")}
+                          onClick={() => redirectToPlaylist("afro")}
                           variant="outline-primary"
                         >
                           Create Playlist
